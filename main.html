@@ -64,13 +64,20 @@
                         boxes[i+1].focus();
                     }
                 })
-                box.addEventListener("keydown",(e)=>{
-                    if(e.key=="Backspace"  && i>0){
-                        if(box.value=="")
-                        boxes[i-1].focus()
-                    
-                    }
-                })
+                box.addEventListener("keydown", (e) => {
+				    if (e.key === "Backspace") {
+
+				    if (box.value !== "") {
+				        box.value = "";
+				        return;
+				      }
+				      if (i > 0) {
+				        boxes[i - 1].focus();
+				        boxes[i - 1].value = "";
+				        e.preventDefault();
+				      }
+				    }
+				  });
             });
         </script>
     </body>
