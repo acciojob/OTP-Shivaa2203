@@ -60,10 +60,9 @@
             let boxes=document.querySelectorAll(".code");
             boxes.forEach((box,i) => {
                 box.addEventListener("input", () => {
+					box.value=box.value.replace(/[^0-9]/g,"");
 				  if (box.value.length === 1 && i < boxes.length - 1) {
-				    setTimeout(() => {
-				      boxes[i + 1].focus();
-				    }, 0);
+				    boxes[i+1].focus();
 				  }
 				});
                 box.addEventListener("keydown", (e) => {
