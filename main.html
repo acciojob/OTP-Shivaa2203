@@ -49,35 +49,37 @@
             <h3 id="verification_subtext">Please Enter the six digit code we have sent to shi***@gmail.com</h3>
         </div>
         <div class="code-container">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
+            <input type="text" maxlength="1" class="code" id="code-1">
+            <input type="text" maxlength="1" class="code" id="code-2">
+            <input type="text" maxlength="1" class="code" id="code-3">
+            <input type="text" maxlength="1" class="code" id="code-4">
+            <input type="text" maxlength="1" class="code" id="code-5">
+            <input type="text" maxlength="1" class="code" id="code-6">
         </div>
         <script>
             let boxes=document.querySelectorAll(".code");
             boxes.forEach((box,i) => {
-                box.addEventListener("input",()=>{
-                    if(box.value.length==1 && i<boxes.length-1){
-                        boxes[i+1].focus();
-                    }
-                })
+                box.addEventListener("input", () => {
+				  if (box.value.length === 1 && i < boxes.length - 1) {
+				    setTimeout(() => {
+				      boxes[i + 1].focus();
+				    }, 0);
+				  }
+				});
                 box.addEventListener("keydown", (e) => {
-				    if (e.key === "Backspace") {
-
+				  if (e.key === "Backspace") {
+				
 				    if (box.value !== "") {
-				        box.value = "";
-				        return;
-				      }
-				      if (i > 0) {
-				        boxes[i - 1].focus();
-				        boxes[i - 1].value = "";
-				        e.preventDefault();
-				      }
+				      box.value = "";
+				      return;
 				    }
-				  });
+				
+				    if (i > 0) {
+				      boxes[i - 1].focus();
+				      boxes[i - 1].value = "";
+				    }
+				  }
+				});
             });
         </script>
     </body>
